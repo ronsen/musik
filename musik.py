@@ -13,9 +13,11 @@ playlist = Playlist(youtube_url);
 for url in playlist.video_urls:
     yt = YouTube(url)
     audio = yt.streams.filter(only_audio=True).first()
-    out = audio.download(output_path='out')
+    f = audio.download(output_path='out')
     
-    file_name = os.path.basename(out)
+    file_name = os.path.basename(f)
     print('Playing: %s' % file_name)
 
-    playsound.playsound(out, True)
+    playsound.playsound(f, True)
+    
+    os.remove(f)
