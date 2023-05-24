@@ -1,6 +1,6 @@
 ## musik
 
-Play YouTube playlist audio in Terminal.
+Play YouTube audio playlist in terminal.
 
 Install `ffmpeg` on your system:
 
