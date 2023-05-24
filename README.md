@@ -11,10 +11,9 @@ sudo apt install -y ffmpeg
 Installation:
 
 ```
-pip install pipenv
-pipenv lock
-pipenv install
-pipenv shell
+pip install pytube
+pip install playsound
+pip install pygobject
 ```
 
 Usage:
