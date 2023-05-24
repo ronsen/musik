@@ -9,17 +9,17 @@ def main(playlist_url):
     playlist = Playlist(playlist_url)
     directory = album(playlist_url)
 
-    for video_url in playlist.video_urls:
-        video = YouTube(video_url)
+    files = os.listdir(directory)
 
-        try:
-            audio = video.streams.filter(only_audio=True).first()       
-            file_path = audio.download(output_path=directory)
-            audio_path = convert(file_path)
-            play(audio_path)
-        except Exception as e:
-            print('Error processing: %s' % video_url)
-        
+    if (len(files) > 0):
+        answer = input("Directory is not empty. Play? (Y/n): ")
+
+        if answer.upper() == 'Y':
+            play_album(directory)
+        else:
+            download(playlist, directory)
+    else:
+        download(playlist, directory)
 
 def album(url):
     parsed_url = urlparse(url)
@@ -44,6 +44,24 @@ def convert(input_file):
     os.remove(input_file)
 
     return output_file
+
+def download(playlist, directory):
+    for video_url in playlist.video_urls:
+        video = YouTube(video_url)
+
+        try:
+            audio = video.streams.filter(only_audio=True).first()       
+            file_path = audio.download(output_path=directory)
+            audio_path = convert(file_path)
+            play(audio_path)
+        except Exception as e:
+            print('Error processing: %s' % video_url)
+
+def play_album(directory):
+    for file in os.listdir(directory):
+        file_path = directory + '/' + file;
+        playsound.playsound(file_path, True)
+
 
 def play(file_path):
     file_name = os.path.basename(file_path)
