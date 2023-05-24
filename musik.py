@@ -11,12 +11,14 @@ def main(playlist_url):
 
     for video_url in playlist.video_urls:
         video = YouTube(video_url)
-        audio = video.streams.filter(only_audio=True).first()
-        
-        file_path = audio.download(output_path=directory)
-        audio_path = convert(file_path)
-        
-        play(audio_path)
+
+        try:
+            audio = video.streams.filter(only_audio=True).first()       
+            file_path = audio.download(output_path=directory)
+            audio_path = convert(file_path)
+            play(audio_path)
+        except Exception as e:
+            print('Error processing: %s' % video_url)
         
 
 def album(url):
