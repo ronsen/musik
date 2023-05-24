@@ -59,8 +59,8 @@ def download(playlist, directory):
 
 def play_album(directory):
     for file in os.listdir(directory):
-        file_path = directory + '/' + file;
-        playsound.playsound(file_path, True)
+        audio_path = directory + '/' + file;
+        play(audio_path)
 
 
 def play(file_path):
