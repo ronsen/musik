@@ -8,10 +8,13 @@ Install `ffmpeg` on your system:
 sudo apt install -y ffmpeg
 ```
 
-Install requirements:
+Installation:
 
 ```
-pip install -r requirements.txt
+pip install pipenv
+pipenv lock
+pipenv install
+pipenv shell
 ```
 
 Usage:
