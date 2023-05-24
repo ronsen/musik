@@ -62,7 +62,6 @@ def play_album(directory):
         audio_path = directory + '/' + file;
         play(audio_path)
 
-
 def play(file_path):
     file_name = os.path.basename(file_path)
     print('Playing: %s' % file_name)
