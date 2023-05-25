@@ -14,10 +14,11 @@ Installation:
 pip install pytube
 pip install playsound
 pip install pygobject
+chmod +x musik.py
 ```
 
 Usage:
 
 ```
-python musik.py [YouTube Playlist URL]
+./musik.py [YouTube Playlist URL]
 ```
