@@ -24,12 +24,18 @@ def main(playlist_url):
         download(playlist, directory)
 
 def album(url):
+    cache_dir = os.path.expanduser('~/.cache')
+    app_directory = os.path.join(cache_dir, 'musik')
+
+    if not os.path.exists(app_directory):
+        os.makedirs(app_directory)
+
     parsed_url = urlparse(url)
     query_string = parsed_url.query
     query_params = parse_qs(query_string)
     
     list_id = query_params['list'][0]
-    directory = 'outputs/' + list_id
+    directory = app_directory + '/' + list_id
 
     if not os.path.exists(directory):
         os.makedirs(directory)
