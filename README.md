@@ -11,14 +11,11 @@ sudo apt install -y ffmpeg
 Installation:
 
 ```
-pip install pytube
-pip install playsound
-pip install pygobject
-chmod +x musik.py
+sh install.sh
 ```
 
 Usage:
 
 ```
-./musik.py [YouTube Playlist URL]
+musik.py [YouTube Playlist URL]
 ```
