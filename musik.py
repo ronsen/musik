@@ -1,15 +1,15 @@
 #!/bin/python
 
 import os
-import sys
 import subprocess
 from pytube import Playlist, YouTube
 from urllib.parse import urlparse, parse_qs
 import playsound
+import argparse
 
-def main(playlist_url):
+def main(playlist_url, dir):
     playlist = Playlist(playlist_url)
-    directory = album(playlist_url)
+    directory = album(playlist_url, dir)
 
     files = os.listdir(directory)
 
@@ -23,9 +23,9 @@ def main(playlist_url):
     else:
         download(playlist, directory)
 
-def album(url):
+def album(url, dir):
     cache_dir = os.path.expanduser('~/.cache')
-    app_directory = os.path.join(cache_dir, 'musik')
+    app_directory = dir if dir else os.path.join(cache_dir, 'musik')
 
     if not os.path.exists(app_directory):
         os.makedirs(app_directory)
@@ -77,8 +77,10 @@ def play(file_path):
     playsound.playsound(file_path, True)
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        print("Please provide YouTube playlist URL to continue.")
-        sys.exit()
-    
-    main(sys.argv[1])
+    parser = argparse.ArgumentParser()
+    parser.add_argument('url', help='Specify YouTube playlist')
+    parser.add_argument('-d', '--directory', help='Specify cache directory')
+
+    args = parser.parse_args()
+
+    main(args.url, args.directory)
