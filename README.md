@@ -11,11 +11,13 @@ sudo apt install -y ffmpeg
 Installation:
 
 ```
-sh install.sh
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 Usage:
 
 ```
-musik.py [YouTube Playlist URL]
+python musik.py [YouTube Playlist URL]
 ```
