@@ -1,11 +1,11 @@
-## musik
+### musik
 
 Play YouTube audio playlist in terminal.
 
-Install `ffmpeg` on your system:
+Install `ffmpeg` and `mpg123` on your system:
 
 ```
-sudo apt install -y ffmpeg
+sudo apt install -y ffmpeg mpg123
 ```
 
 Installation:
