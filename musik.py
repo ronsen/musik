@@ -83,10 +83,13 @@ def play(file_path):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('url', help='Specify YouTube playlist')
-    parser.add_argument('-d', '--directory', help='Specify cache directory')
+    try:
+        parser = argparse.ArgumentParser()
+        parser.add_argument('url', help='Specify YouTube playlist')
+        parser.add_argument('-d', '--directory', help='Specify cache directory')
 
-    args = parser.parse_args()
+        args = parser.parse_args()
 
-    main(args.url, args.directory)
+        main(args.url, args.directory)
+    except KeyboardInterrupt:
+        print('Bye.')
